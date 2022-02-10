@@ -1,0 +1,45 @@
+﻿@model IEnumerable<KitapEvi_Models.Models.Yayinevi>
+	<div class="border p-4 ">
+		<div class="row">
+			<div class="col-10">
+				<h2 class="text-info">YayınEvi Listesi</h2>
+			</div>
+			<div class="col-2">
+				<a class="btn btn-info form-control" asp-action="Update_Insert">YayınEvi Ekle</a>
+			</div>
+
+		</div>
+		<div>
+			@if (Model.Count() > 0)
+			{
+				<table class="table table-striped border">
+					<tbody>
+						<tr class="table-secondary">
+							<th> Yayın Evi</th>
+							<th> Lokasyon</th>
+							<th> </th>
+						</tr>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>@item.YayinEviAdi</td>
+								<td>@item.Lokasyon</td>
+								<td>
+									<a asp-action="Update_Insert" asp-route-id="@item.YayinEviID" class="btn btn-primary text-white">
+										Düzenle
+									</a>
+									<a asp-action="Delete" asp-route-id="@item.YayinEviID" class="btn btn-primary text-white">
+										Sil
+									</a>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			}
+			else
+			{
+				<p>Kayit Bulanamadı</p>
+			}
+		</div>
+	</div>
